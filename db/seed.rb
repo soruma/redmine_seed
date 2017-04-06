@@ -4,6 +4,9 @@ include FactoryGirl::Syntax::Methods
 plugin_dir = Redmine::Plugin.find(:redmine_seed).directory
 Dir["#{plugin_dir}/db/factories/**/*.rb"].each { |f| require f }
 
+setting_notified_events = Setting.notified_events
+Setting.notified_events = []
+
 console = Logger.new(STDOUT)
 
 console.info 'Delete exist data'
@@ -25,3 +28,5 @@ create_list :dev_version, 20
 
 console.info 'Create issues'
 create_list :dev_issue, 200
+
+Setting.notified_events = setting_notified_events
