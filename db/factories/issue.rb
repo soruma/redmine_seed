@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     fixed_version { assignable_versions.sample }
     author_id { User.pluck(:id).sample }
-    assigned_to_id { project.members.pluck(:user_id).sample }
+    assigned_to_id { project.members.pluck(:user_id).push(nil).sample }
     due_date { Random.rand(1.year.ago...1.year.since) }
     estimated_hours { Random.rand(0...10) }
 
