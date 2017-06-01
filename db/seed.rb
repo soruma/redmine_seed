@@ -11,7 +11,7 @@ console = Logger.new(STDOUT)
 
 console.info 'Delete exist data'
 Project.delete_all
-User.where.not(login: :admin).delete_all
+User.where("login != 'admin'").delete_all
 Member.delete_all
 Version.delete_all
 Issue.delete_all
@@ -20,7 +20,7 @@ console.info 'Create projects'
 create_list :dev_project, 10
 
 console.info 'Create project members'
-admin = User.find_by login: :admin
+admin = User.find_by_login :admin
 users = create_list :dev_user, 5
 Project.all.each do |project|
   create :dev_member, project: project, roles: [Role.givable.first], user_id: admin.id
