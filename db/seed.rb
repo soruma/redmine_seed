@@ -1,5 +1,5 @@
-require 'factory_girl_rails'
-include FactoryGirl::Syntax::Methods
+require 'factory_bot_rails'
+include FactoryBot::Syntax::Methods
 
 plugin_dir = Redmine::Plugin.find(:redmine_seed).directory
 Dir["#{plugin_dir}/db/factories/**/*.rb"].each { |f| require f }

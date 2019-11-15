@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :dev_member, class: Member do
     project_id { Project.pluck(:id).sample }
     user_id do
@@ -8,6 +8,6 @@ FactoryGirl.define do
     end
     roles { [Role.find(Role.givable.pluck(:id).sample)] }
 
-    mail_notification true
+    mail_notification { true }
   end
 end

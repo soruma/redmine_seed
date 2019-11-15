@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :dev_version, class: Version do
     project { Project.find Project.pluck(:id).sample }
     sequence(:name) { |i| "version_#{i}" }
