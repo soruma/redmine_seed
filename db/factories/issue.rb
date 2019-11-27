@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :dev_issue, class: Issue do
-    subject { 'issue' }
+    sequence(:subject) { |i| "issue #{i}" }
     project_id { Project.pluck(:id).sample }
     tracker_id { Tracker.pluck(:id).sample }
     status_id { IssueStatus.pluck(:id).sample }
